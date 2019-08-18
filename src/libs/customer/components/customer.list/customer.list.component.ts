@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CustomerSelectors } from '../../state/customer.selectors';
 import { tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { loadAllAction, Customer, removeCustomer } from '../../state';
+import { loadAllAction, Customer, removeCustomer, selectedCustomerAction } from '../../state';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -25,8 +25,12 @@ export class CustomerListComponent implements OnInit {
     ).subscribe();
   }
 
-  public onRemoveItem(item: Customer){
+  public onRemoveItem(item: Customer) {
     this.store.dispatch(removeCustomer({customer: item}));
+  }
+
+  public onSelectCustomer(item: Customer) {
+    this.store.dispatch(selectedCustomerAction({customer: item}));
   }
 
 }

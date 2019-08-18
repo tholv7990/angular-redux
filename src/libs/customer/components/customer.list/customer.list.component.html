@@ -1,6 +1,6 @@
 <ng-container *ngIf="selectors.customers$ | async as customers">
     <div class="item" *ngFor="let customer of customers">
-       <div class="left">
+       <div (click)="onSelectCustomer(item)" class="left">
         Full Name: {{customer.name}}  <br/>
         Email: {{customer.email}}
        </div>

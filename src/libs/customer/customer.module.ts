@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CustomerListComponent } from './components';
+import { CustomerListComponent, CustomerDetailsComponent } from './components';
 import { StoreModule } from '@ngrx/store';
 import { safeCustomerReducer, CustomerEffects } from './state';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [ CustomerListComponent],
+  declarations: [ CustomerListComponent, CustomerDetailsComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -21,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
   }),
   EffectsModule.forRoot([CustomerEffects]),
   ],
-  exports: [CustomerListComponent],
+  exports: [CustomerListComponent, CustomerDetailsComponent],
   providers: [],
 })
 export class CustomerModule { }

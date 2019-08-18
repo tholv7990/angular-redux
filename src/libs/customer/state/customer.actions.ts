@@ -20,3 +20,8 @@ export const removeCustomer = createAction(
     '[Customer] Remove Selected Customer',
     props<{customer: Customer}>()
 );
+
+export const selectedCustomerAction = createAction(
+    '[Customer] Selected Customer',
+    props<{customer: Customer}>()
+);

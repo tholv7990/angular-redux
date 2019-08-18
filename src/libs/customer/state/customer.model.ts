@@ -4,6 +4,7 @@ export interface Customer {
     phone?: string;
     username?: string;
     website?: string;
+    email?: string;
 }
 
 
@@ -15,4 +16,5 @@ export enum CustomerActionName {
 
 export interface CustomerState {
     customers: Customer[];
+    selectedCustomer: Customer;
 }
