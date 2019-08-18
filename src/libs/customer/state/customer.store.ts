@@ -14,7 +14,7 @@ export const customerReducer = createReducer(initialState,
         return { ...state, customers: data.customers };
     }),
     on(removeCustomer, (state: CustomerState, data: any) => {
-        state.customers = state.customers.filter(x => x._id !== data.customer._id);
+        state.customers = state.customers.filter(x => x.name !== data.customer.name);
         return {...state};
     })
 

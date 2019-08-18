@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { Entity } from '.';
+import { Customer } from '.';
 import { loadAllAction, loadAllActionSuccess, loadAllActionFailed } from './customer.actions';
 
 @Injectable()
@@ -20,25 +20,25 @@ export class CustomerEffects {
         .pipe(
             ofType(loadAllAction),
             switchMap(action => {
-                const res = this.fakeData();
-                return  of(loadAllActionSuccess({customers: [...res]}));
+               // const res = this.fakeData();
+              //  return  of(loadAllActionSuccess({customers: [...res]}));
 
-                // return this.http.get<Entity[]>(`/someapi`)
-                //     .pipe(
-                //         map(x => {
+                return this.http.get<Customer[]>(`https://jsonplaceholder.typicode.com/users?fbclid=IwAR0Z1erH5CBFZagJS7KGJlpei7YEnrzwkOv8zVFVRFrJoxCyI9ySNB1SoK0`)
+                    .pipe(
+                        map(x => {
+                           // console.log(x);
+                            return loadAllActionSuccess({ customers: x });
 
-                //             return loadAllActionSuccess({ customers: this.fakeData() });
-
-                //         }),
-                //         catchError((error) => {
-                //             return of(loadAllActionFailed({ message: error }));
-                //         })
-                //     );
+                        }),
+                        catchError((error) => {
+                            return of(loadAllActionFailed({ message: error }));
+                        })
+                    );
             })
         );
 
 
-        private fakeData(): Entity[] {
+        private fakeData(): Customer[] {
             const customers = [];
 
             for ( let i = 1; i < 10; i++) {

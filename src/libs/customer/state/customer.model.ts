@@ -1,6 +1,9 @@
-export interface Entity {
+export interface Customer {
     _id: string;
     name?: string;
+    phone?: string;
+    username?: string;
+    website?: string;
 }
 
 
@@ -11,5 +14,5 @@ export enum CustomerActionName {
 }
 
 export interface CustomerState {
-    customers: Entity[];
+    customers: Customer[];
 }

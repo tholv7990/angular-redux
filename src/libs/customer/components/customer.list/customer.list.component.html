@@ -1,6 +1,12 @@
 <ng-container *ngIf="selectors.customers$ | async as customers">
-    <div *ngFor="let customer of customers">
-        Name: {{customer.name}} 
+    <div class="item" *ngFor="let customer of customers">
+       <div class="left">
+        Full Name: {{customer.name}}  <br/>
+        Email: {{customer.email}}
+       </div>
+       <div class="right">
         <button (click)="onRemoveItem(customer)">remove</button>
+       </div>
+       
     </div>
 </ng-container>

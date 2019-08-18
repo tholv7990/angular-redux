@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Entity } from '.';
+import { Customer } from '.';
 
 export const loadAllAction = createAction(
     '[Customer] Load All Customer'
@@ -7,7 +7,7 @@ export const loadAllAction = createAction(
 
 export const loadAllActionSuccess = createAction(
     '[Customer] Load All Customer Success',
-    props<{ customers: Entity[]}>()
+    props<{ customers: Customer[]}>()
 );
 
 export const loadAllActionFailed = createAction(
@@ -18,5 +18,5 @@ export const loadAllActionFailed = createAction(
 
 export const removeCustomer = createAction(
     '[Customer] Remove Selected Customer',
-    props<{customer: Entity}>()
+    props<{customer: Customer}>()
 );

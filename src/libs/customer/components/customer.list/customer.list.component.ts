@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CustomerSelectors } from '../../state/customer.selectors';
 import { tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { loadAllAction, Entity, removeCustomer } from '../../state';
+import { loadAllAction, Customer, removeCustomer } from '../../state';
 
 @Component({
   // tslint:disable-next-line: component-selector
   selector: 'customer-list',
   templateUrl: './customer.list.component.html',
-  styleUrls: ['./customer.list.component.less']
+  styleUrls: ['./customer.list.component.less'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CustomerListComponent implements OnInit {
 
@@ -24,7 +25,7 @@ export class CustomerListComponent implements OnInit {
     ).subscribe();
   }
 
-  public onRemoveItem(item: Entity){
+  public onRemoveItem(item: Customer){
     this.store.dispatch(removeCustomer({customer: item}));
   }
 
