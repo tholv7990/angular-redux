@@ -1,5 +1,5 @@
 import { CustomerState } from '.';
-import { loadAllActionSuccess } from './customer.actions';
+import { loadAllActionSuccess, removeCustomer } from './customer.actions';
 import { on, createReducer } from '@ngrx/store';
 
 
@@ -11,8 +11,11 @@ export const customerReducer = createReducer(initialState,
 
 
     on(loadAllActionSuccess, (state: CustomerState, data: any) => {
-        console.log('store',data)
         return { ...state, customers: data.customers };
+    }),
+    on(removeCustomer, (state: CustomerState, data: any) => {
+        state.customers = state.customers.filter(x => x._id !== data.customer._id);
+        return {...state};
     })
 
 );
